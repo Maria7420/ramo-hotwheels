@@ -142,7 +142,7 @@
       -webkit-background-clip: initial;
       -webkit-text-fill-color: initial;
       background-clip: initial;
-      text-fill-color: initial;
+      -webkit-text-fill-color: initial;
       border-bottom: 2px dashed #ffd700;
       padding-bottom: 6px;
     }
@@ -353,7 +353,7 @@
 <body>
  <!-- Pantalla de bienvenida -->
  <div id="welcome">
-    <img src="log.png" alt="Hot Wheels" style="width:300px;max-width:90vw;margin-bottom:-40px;">
+    <img src="assets/log.png" alt="Hot Wheels" style="width:300px;max-width:90vw;margin-bottom:-40px;">
     <h2>
       ¡Feliz 30 de septiembre, mi amor!<br>
       <span>
@@ -373,27 +373,27 @@
     <img src="https://feliz-30-de-septiembre.netlify.app/assets/ramo1.png" class="ramo-base">
 
     <!-- Flores azules (varias, formando un ramo) -->
-    <img src="flor1.png" class="flower" style="top:34%; left:30%;">
-    <img src="flor1.png" class="flower" style="top:36%; left:42%;">
-    <img src="flor1.png" class="flower" style="top:36%; left:54%;">
-    <img src="flor1.png" class="flower" style="top:34%; left:66%;">
-    <img src="flor1.png" class="flower" style="top:44%; left:37%;">
-    <img src="flor1.png" class="flower" style="top:44%; left:49%;">
-    <img src="flor1.png" class="flower" style="top:44%; left:61%;">
-    <img src="flor1.png" class="flower" style="top:54%; left:43%;">
-    <img src="flor1.png" class="flower" style="top:54%; left:55%;">
-    <img src="flor1.png" class="flower" style="top:40%; left:24%;">
-    <img src="flor1.png" class="flower" style="top:48%; left:28%;">
-    <img src="flor1.png" class="flower" style="top:56%; left:32%;">
-    <img src="flor1.png" class="flower" style="top:50%; left:26%;">
-    <img src="flor1.png" class="flower" style="top:60%; left:36%;">
+    <img src="assets/flor1.png" class="flower" style="top:34%; left:30%;">
+    <img src="assets/flor1.png" class="flower" style="top:36%; left:42%;">
+    <img src="assets/flor1.png" class="flower" style="top:36%; left:54%;">
+    <img src="assets/flor1.png" class="flower" style="top:34%; left:66%;">
+    <img src="assets/flor1.png" class="flower" style="top:44%; left:37%;">
+    <img src="assets/flor1.png" class="flower" style="top:44%; left:49%;">
+    <img src="assets/flor1.png" class="flower" style="top:44%; left:61%;">
+    <img src="assets/flor1.png" class="flower" style="top:54%; left:43%;">
+    <img src="assets/flor1.png" class="flower" style="top:54%; left:55%;">
+    <img src="assets/flor1.png" class="flower" style="top:40%; left:24%;">
+    <img src="assets/flor1.png" class="flower" style="top:48%; left:28%;">
+    <img src="assets/flor1.png" class="flower" style="top:56%; left:32%;">
+    <img src="assets/flor1.png" class="flower" style="top:50%; left:26%;">
+    <img src="assets/flor1.png" class="flower" style="top:60%; left:36%;">
 
     <!-- Carros acomodados en forma de ramo -->
-    <img src="car1.png" class="car" style="top:18%; left:6%; transform: rotate(-18deg);" onclick="openModal(0)">
-    <img src="car2.png" class="car" style="top:8%; left:26%; transform: rotate(-8deg);" onclick="openModal(1)">
-    <img src="car3.png" class="car" style="top:3%; left:46%; transform: rotate(0deg);" onclick="openModal(2)">
-    <img src="car4.png" class="car" style="top:8%; right:6%; transform: rotate(-8deg);" onclick="openModal(3)">
-    <img src="car4.png" class="car" style="top:20%; right:2%; transform: rotate(18deg);" onclick="openModal(4)">
+    <img src="assets/car1.png" class="car" style="top:18%; left:6%; transform: rotate(-18deg);" onclick="openModal(0)">
+    <img src="assets/car2.png" class="car" style="top:8%; left:26%; transform: rotate(-8deg);" onclick="openModal(1)">
+    <img src="assets/car3.png" class="car" style="top:3%; left:46%; transform: rotate(0deg);" onclick="openModal(2)">
+    <img src="assets/car4.png" class="car" style="top:8%; right:6%; transform: rotate(-8deg);" onclick="openModal(3)">
+    <img src="assets/car4.png" class="car" style="top:20%; right:2%; transform: rotate(18deg);" onclick="openModal(4)">
 
     <!-- Botón debajo del ramo -->
     <button id="btn-feliz" style="
@@ -431,22 +431,25 @@
   <!-- Pantalla especial de felicidad -->
   <div id="feliz">
     <div class="caja">
-      <img src="foto-juntos.jpg" alt="Nosotros">
+      <img src="assets/foto-juntos.jpg" alt="Nosotros">
       <h2>¡ME HACES FELIZ💙🚗✨</h2>
       <button onclick="cerrarFeliz()">Cerrar</button>
     </div>
   </div>
 
   <!-- Música -->
-  <audio autoplay loop>
-    <source src="musica.mp3" type="audio/mpeg">
+  <audio id="bg-music" autoplay loop muted>
+    <source src="assets/musica.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Pantalla de bienvenida
-    function hideWelcome() {
-      document.getElementById('welcome').style.display = 'none';
-    }
+  // Pantalla de bienvenida
+  function hideWelcome() {
+    document.getElementById('welcome').style.display = 'none';
+    const music = document.getElementById("bg-music");
+    music.muted = false;   // Activa sonido
+    music.play();          // Reproduce
+  }
 
     const frases = [
       "Eres mi pista favorita donde quiero correr toda la vida contigo 🚗💙",
